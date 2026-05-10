@@ -1,0 +1,206 @@
+/* ===== Color Tokens (derived from the illustration) =====
+   Cream:       #FFFDF5
+   Mint:        #9FE6D9
+   Deep Mint:   #42C7B9
+   Lavender:    #C9B8FF
+   Deep Purple: #5B4B8A
+   Ink:         #11131A
+   Soft Gray:   #6B7280
+*/
+
+:root {
+  --bg-cream: #FFFDF5;
+  --mint: #9FE6D9;
+  --mint-deep: #42C7B9;
+  --lavender: #C9B8FF;
+  --purple-deep: #5B4B8A;
+  --ink: #11131A;
+  --soft-gray: #6B7280;
+  --shadow-lg: 0 8px 30px rgba(91, 75, 138, 0.15);
+  --shadow-sm: 0 6px 18px rgba(66, 199, 185, 0.25);
+}
+
+/* ===== Layout ===== */
+
+.error-wrapper {
+  background-color: var(--bg-cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  color: var(--ink);
+}
+
+.error-main {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: clamp(24px, 3vw, 48px) 0;
+}
+
+/* ===== Decorative Blobs ===== */
+
+.blob-bg {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  filter: blur(24px);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.blob-1 {
+  top: -60px;
+  left: -120px;
+  background: radial-gradient(ellipse at 40% 40%, var(--mint) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 70%, var(--lavender) 0%, transparent 65%);
+}
+
+.blob-2 {
+  bottom: -80px;
+  right: -140px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse at 60% 40%, var(--lavender) 0%, transparent 60%),
+              radial-gradient(ellipse at 30% 80%, var(--mint) 0%, transparent 65%);
+}
+
+/* Keep text above blobs */
+.error-text-section,
+.illustration-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Typography ===== */
+
+.error-code {
+  font-size: clamp(64px, 9vw, 112px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 0 0 6px;
+  color: var(--purple-deep);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.error-title {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.error-subtitle {
+  color: var(--soft-gray);
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.65;
+  margin: 0 0 28px;
+}
+
+/* ===== Actions ===== */
+
+.action-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Primary pill button in mint/lavender gradient to match art */
+.btn-primary-pill {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--mint), var(--lavender));
+  color: #0E0E12;
+  text-decoration: none;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.btn-primary-pill:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: 0 10px 24px rgba(66, 199, 185, 0.28);
+}
+
+.btn-outline {
+  border: 2px solid var(--purple-deep);
+  background: transparent;
+  color: var(--purple-deep);
+}
+/* --- Prevent horizontal scroll across the page --- */
+html, body {
+  overflow-x: hidden;
+}
+
+/* --- Ensure the right column never overflows --- */
+.error-visual-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;             /* vertically center image in its row */
+  overflow: hidden;                /* clip any accidental overflow */
+  padding-inline: clamp(8px, 1.6vw, 16px);
+}
+
+/* --- Keep the image container responsive and centered --- */
+.illustration-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;                /* cap width so it doesn't push outside */
+  aspect-ratio: 16 / 9;            /* provides a stable box for the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  background: rgba(255, 255, 255, 0.0); /* keep or remove your glass card */
+  box-shadow: none;                /* optional: avoid extra width from shadow */
+  padding: 0;                      /* avoid padding pushing image out */
+}
+
+/* --- Make the img scale without cropping --- */
+.error-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;             /* no cropping; fit entirely in box */
+  object-position: center center;  /* center it */
+  display: block;
+  max-height: min(72vh, 720px);    /* keep it within the viewport height */
+  border-radius: 12px;             /* optional */
+}
+
+/* --- Tidy decorative blobs so they don't cause overflow --- */
+.mini-blob {
+  filter: blur(18px);
+  opacity: 0.55;
+  z-index: 0;
+}
+.mint { bottom: 8px; left: 8px; }
+.lavender { top: 8px; right: 8px; }
+
+/* --- Text column spacing so both sides look balanced --- */
+.error-text-section {
+  padding-inline: clamp(12px, 2vw, 24px);
+}
+
+/* --- On medium and small screens, stack cleanly --- */
+@media (max-width: 991.98px) {
+  .illustration-container {
+    max-width: 560px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .illustration-container {
+    max-width: 520px;
+    aspect-ratio: 1 / 1;          /* more square on phones */
+  }
+  .error-illustration {
+    max-height: 56vh;             /* reduce height on phones */
+  }
+}

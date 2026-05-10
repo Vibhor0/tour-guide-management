@@ -1,0 +1,566 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800");
+
+/* ====== Light dynamic background ====== */
+.auth-shell {
+  position: relative;
+  isolation: isolate;      /* keep bg layers behind content */
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  padding: 24px 12px;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+  animation: fadeInBg .8s ease;
+  filter: saturate(1.03) brightness(1.02);
+}
+
+.auth-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom right, rgba(255,255,255,0.86), rgba(255,255,255,0.78)),
+    radial-gradient(800px 500px at 10% 15%, rgba(255, 173, 190, 0.20), transparent 60%),
+    radial-gradient(800px 500px at 95% 85%, rgba(173, 216, 230, 0.18), transparent 60%);
+  backdrop-filter: blur(1.2px);
+}
+
+@keyframes fadeInBg {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.auth-card {
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  width: 920px;
+  max-width: 100%;
+  min-height: 560px;
+
+  border-radius: 14px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.6s ease-in-out;
+  background: #ffffff;
+}
+
+.sign-in-container {
+  left: 0;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  z-index: 2;
+}
+
+.auth-card.right-panel-active .form-container {
+  transform: translateX(100%);
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.auth-card.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(to right, #2a3fa3, rgb(198, 173, 179));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+
+  color: #a19292;
+
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.auth-card.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  top: 67;
+
+  height: 82%;
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 44px;
+
+  text-align: center;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-right {
+  right: 0;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-card.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.auth-card.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+@media (min-width: 992px) {
+  .overlay-panel {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.auth-card h1,
+.auth-card h2 {
+  margin: 0;
+}
+
+.auth-card p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  margin: 14px 0 22px;
+}
+
+.auth-card .form-label {
+  color: #2e2e2e;
+}
+
+.auth-card .form-control {
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.auth-card .form-control:focus {
+  border-color: rgba(255, 75, 43, 0.55);
+  background: #fff;
+  box-shadow: 0 0 0 0.25rem rgba(255, 75, 43, 0.18);
+}
+
+.auth-card .invalid-feedback {
+  font-size: 0.85rem;
+}
+
+.auth-card .btn.btn-primary {
+  border-radius: 22px;
+  border: 1px solid #2a3fa3;
+  background-color: #2a3fa3;
+
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  padding: 12px 22px;
+  transition: transform 80ms ease-in, filter 0.15s ease-in, background 0.2s ease;
+}
+
+.auth-card .btn.btn-primary:hover {
+  filter: brightness(0.97);
+  background-color: #ff3f1f;
+  border-color: #ff3f1f;
+}
+
+.auth-card .btn.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.auth-card .btn.btn-outline-light {
+  border-radius: 22px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 10px 22px;
+}
+
+.auth-card .alert {
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    width: min(560px, 96vw);
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .overlay-container {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    transform: none !important;
+  }
+
+  .overlay {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none !important;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .overlay-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 18px 20px;
+    align-items: center;
+    text-align: center;
+    transform: none !important;
+  }
+
+  .form-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    padding: 12px 0;
+  }
+}
+
+input,
+#username,
+#password,
+#firstName,
+#lastName,
+#regUsername,
+#email,
+#regPassword,
+#role {
+  margin-top: 0px;
+}
+/* Ensure typed text inside inputs is visible */
+.auth-card .form-control,
+.auth-card input,
+.auth-card select {
+  color: #1f2937 !important; /* Dark gray / almost black */
+}
+/* Placeholder text */
+.auth-card .form-control::placeholder {
+  color: #9ca3af; /* Light gray */
+  opacity: 1;
+}
+
+.auth-card input:-webkit-autofill,
+.auth-card input:-webkit-autofill:hover,
+.auth-card input:-webkit-autofill:focus,
+.auth-card select:-webkit-autofill {
+  -webkit-text-fill-color: #1f2937 !important;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.auth-card {
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;               /* keep rounded corners on overlay */
+  width: 980px;                    /* you can keep 920px if you prefer */
+  max-width: 100%;
+  min-height: 640px;              /* give it some base height */
+  height: auto;                   /* 🔴 allow to grow with content */
+  border-radius: 14px;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.password-toggle-btn {
+  border-color: #e5e7eb;
+  color: #374151;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-toggle-btn:hover {
+  background: #55708b;
+}
+.password-toggle-btn svg {
+  display: block;
+}
+
+   :root {
+    /* Brand palette (unused tokens) */
+    --brand-primary-50: #eef2ff;
+    --brand-primary-100: #e0e7ff;
+    --brand-primary-200: #c7d2fe;
+    --brand-primary-300: #a5b4fc;
+    --brand-primary-400: #818cf8;
+    --brand-primary-500: #6366f1;
+    --brand-primary-600: #4f46e5;
+    --brand-primary-700: #4338ca;
+    --brand-primary-800: #3730a3;
+    --brand-primary-900: #312e81;
+  
+    /* Semantic colors (not used yet) */
+    --success-500: #16a34a;
+    --danger-500: #dc2626;
+    --warning-500: #d97706;
+    --info-500: #0ea5e9;
+  
+    /* Typographic scale (unused) */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+  
+    /* Shadows (unused) */
+    --shadow-soft: 0 6px 18px rgba(0,0,0,.10);
+    --shadow-hard: 0 12px 28px rgba(0,0,0,.22);
+  
+    /* Radius (unused) */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  
+    /* Z-layers (doc only) */
+    --z-bg: -2;
+    --z-overlay-veil: -1;
+    --z-card: 1;
+    --z-overlay-content: 100;
+  }
+  
+  /* -----------------------------------------
+     2) Utility classes (not used in markup)
+     ----------------------------------------- */
+  .u-visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden; clip: rect(1px,1px,1px,1px);
+    white-space: nowrap; clip-path: inset(50%);
+    border: 0; padding: 0; margin: -1px;
+  }
+  
+  .u-no-pointer { pointer-events: none !important; }
+  .u-pointer     { cursor: pointer !important; }
+  .u-select-none { user-select: none !important; }
+  .u-select-text { user-select: text !important; }
+  
+  /* spacing helpers: not applied anywhere */
+  .u-m-0 { margin: 0 !important; }
+  .u-p-0 { padding: 0 !important; }
+  .u-mx-auto { margin-left: auto !important; margin-right: auto !important; }
+  .u-w-100 { width: 100% !important; }
+  .u-h-100 { height: 100% !important; }
+  
+  /* -----------------------------------------
+     3) Debug helpers (opt-in, unused)
+     ----------------------------------------- */
+  .debug-outline * { outline: 1px dashed rgba(0,0,0,.12); }
+  .debug-layer { background: repeating-linear-gradient(45deg, #fafafa, #fafafa 10px, #f3f4f6 10px, #f3f4f6 20px); }
+  
+  /* -----------------------------------------
+     4) Print styles (scoped; rarely used)
+     ----------------------------------------- */
+  @media print {
+    .print-hidden { display: none !important; }
+    .print-only { display: block !important; }
+    .auth-card { box-shadow: none !important; }
+    .overlay-container, .overlay { display: none !important; }
+  }
+  
+  /* ------------------------------------------------
+     5) Reduced motion preferences (no-op fallback)
+     ------------------------------------------------ */
+  @media (prefers-reduced-motion: reduce) {
+    .anim-none,
+    .auth-card *,
+    .overlay, .form-container {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* -----------------------------------------
+     6) Feature queries (selectors unused)
+     ----------------------------------------- */
+  @supports (backdrop-filter: blur(2px)) {
+    .frosted-veil { backdrop-filter: blur(2px); /* not used */ }
+  }
+  @supports not (backdrop-filter: blur(2px)) {
+    .frosted-veil { background-color: rgba(255,255,255,0.02); /* not used */ }
+  }
+  
+  /* -----------------------------------------------------
+     7) Unused animation stubs (not referenced anywhere)
+     ----------------------------------------------------- */
+  @keyframes noop-fade {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+  }
+  @keyframes noop-move {
+    0% { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(0,0,0); }
+  }
+  .anim-noop { animation: noop-fade 1s linear; }
+  
+  /* ---------------------------------------------------
+     8) Layered “token” classes (not in your markup)
+     --------------------------------------------------- */
+  .token-bg-primary { background: var(--brand-primary-500) !important; }
+  .token-text-success { color: var(--success-500) !important; }
+  .token-text-danger  { color: var(--danger-500) !important; }
+  .token-shadow-soft  { box-shadow: var(--shadow-soft) !important; }
+  .token-radius-md    { border-radius: var(--radius-md) !important; }
+  
+  /* ---------------------------------------------------
+     9) Container + media helpers (unused wrappers)
+     --------------------------------------------------- */
+  .container-tight { max-width: 720px; margin-inline: auto; }
+  .container-wide  { max-width: 1280px; margin-inline: auto; }
+  @media (max-width: 576px) {
+    .hidden-xs { display: none !important; }
+  }
+  @media (min-width: 1200px) {
+    .show-xl { display: block !important; }
+  }
+  
+  /* ---------------------------------------------------
+     10) Accessibility-friendly focus ring (opt-in)
+     --------------------------------------------------- */
+  .focus-ring:focus-visible {
+    outline: 3px solid #93c5fd; /* blue-300 */
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  
+  /* ---------------------------------------------------
+     11) Form palette tokens (unused variants)
+     --------------------------------------------------- */
+  .form-variant--subtle {
+    --input-bg: #fafafa;
+    --input-border: #e5e7eb;
+    --input-focus: #c7d2fe;
+    --input-text: #111827;
+  }
+  .form-variant--subtle .form-control {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-text);
+  }
+  .form-variant--subtle .form-control:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.18);
+  }
+  
+  /* ---------------------------------------------------
+     12) Grid helpers (not attached anywhere)
+     --------------------------------------------------- */
+  .grid {
+    display: grid;
+    gap: 12px;
+  }
+  .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-center { place-items: center; }
+  
+  /* ---------------------------------------------------
+     13) Position helpers (unused)
+     --------------------------------------------------- */
+  .pos-relative { position: relative !important; }
+  .pos-absolute { position: absolute !important; }
+  .inset-0 { inset: 0 !important; }
+  .z-top { z-index: 9999 !important; }
+  
+  /* ---------------------------------------------------
+     14) Typography utilities (unused)
+     --------------------------------------------------- */
+  .text-ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .text-muted-2 { color: #6b7280 !important; }
+  .text-strong  { font-weight: 700 !important; }
+  
+  /* ---------------------------------------------------
+     15) Button variants (not used)
+     --------------------------------------------------- */
+  .btn-ghost {
+    background: transparent;
+    border: 1px dashed #cbd5e1;
+    color: #334155;
+  }
+  .btn-ghost:hover { background: #f8fafc; }
+  
+  /* ---------------------------------------------------
+     16) Safe resets for hypothetical classes (unused)
+     --------------------------------------------------- */
+  .card--flat   { box-shadow: none !important; }
+  .card--rounded { border-radius: var(--radius-lg) !important; }
+  
+
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  .scroll-thin::-webkit-scrollbar { height: 8px; width: 8px; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+  
+ 
+  @media (prefers-color-scheme: dark) {
+    .dark-token { color-scheme: dark; }
+    .dark-token .text-muted-2 { color: #9ca3af !important; }
+  }
+  
+ 
+  .scope-placeholders .slot {
+    padding: 0.5rem;
+    border: 1px solid #eee;
+  }
+ 
+  [data-hidden="true"] { display: none !important; }
+  [data-elev="1"] { box-shadow: var(--shadow-soft); }
+  [data-elev="2"] { box-shadow: var(--shadow-hard); }
+  
+  

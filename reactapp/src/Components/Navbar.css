@@ -1,0 +1,144 @@
+/* ------------------------------------------------------
+   FIXED LIGHT NAVBAR (IGNORES DARK MODE)
+------------------------------------------------------ */
+
+/* NAVBAR CONTAINER (always white) */
+.tm-nav-container {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 100px;
+  padding: 10px 30px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* NAV LINKS (always dark) */
+.navbar-nav .nav-link {
+  color: #0a3d2e !important;      /* your deep green */
+  font-weight: 600;
+  padding: 0 12px !important;
+  transition: 0.25s ease;
+}
+.navbar-nav .nav-link:hover {
+  color: #e8f086 !important;      /* lime accent */
+}
+
+/* THEME TOGGLE BUTTON (white pill) */
+.theme-toggle-btn {
+  background: #ffffff;
+  color: #0a3d2e;
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* PROFILE PILL (always white) */
+.user-pill {
+  background: #ffffff;
+  color: #0a3d2e;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Avatar */
+.avatar-circle,
+.avatar-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.avatar-circle {
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  background: #e8f086;       /* lime */
+  color: #0a3d2e;
+}
+
+.avatar-img {
+  object-fit: cover;
+  display: block;
+}
+
+/* Labels */
+.user-labels {
+  max-width: 160px;
+}
+.user-name {
+  font-weight: 700;
+  color: #0a3d2e;
+}
+.user-role {
+  font-size: 12px;
+  color: rgba(0,0,0,0.55);
+}
+
+/* ------------------------------------------------------
+   DROPDOWN MENU (always light)
+------------------------------------------------------ */
+.user-dropdown {
+  position: relative;
+}
+
+.user-dropdown .dropdown-menu {
+  display: none;
+  min-width: 260px;
+  padding: 6px 0;
+  border-radius: 16px;
+
+  background: #ffffff;         /* FIXED light */
+  color: #0a3d2e;
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+
+  overflow: hidden;
+  z-index: 2000;
+}
+
+/* Show on hover */
+.user-dropdown:hover .dropdown-menu,
+.user-dropdown:focus-within .dropdown-menu {
+  display: block;
+  margin-top: 12px;
+}
+
+/* Dropdown items */
+.user-dropdown .dropdown-item {
+  font-weight: 600;
+  color: #0a3d2e;
+  padding: 10px 16px;
+}
+
+.user-dropdown .dropdown-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Logout item */
+.user-dropdown .dropdown-item.text-danger {
+  color: #ff3b3b;
+}
+.user-dropdown .dropdown-item.text-danger:hover {
+  background: rgba(255,0,0,0.12);
+}
+
+/* Divider */
+.user-dropdown .dropdown-divider {
+  margin: 6px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+/* One-line role chip on the pill */
+.user-role-chip {
+  font-weight: 800;
+  color: #0a3d2e;      /* fixed to your brand dark green (since navbar is fixed-light) */
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* If you want the chip lighter/dimmer, you can tweak color here */

@@ -1,0 +1,298 @@
+/* TRAVEL TALES - TRIPS STYLE CSS
+  Focus: Deep Greens, High-Contrast Accents, and Smooth Transitions
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
+:root {
+  --tm-green-dark: #0a3d2e; /* Deep forest green from video */
+  --tm-green-mid: #145240;
+  --tm-accent-lime: #e8f086; /* The yellowish-lime highlight */
+  --tm-white: #ffffff;
+  --tm-off-white: #f9fbf9;
+  --tm-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --tm-radius-lg: 60px;
+  --tm-radius-pill: 150px;
+}
+
+/* --- Global Overrides --- */
+body {
+  background-color: var(--tm-white);
+  font-family: 'Inter', sans-serif;
+  color: var(--tm-white);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.tm-nav {
+  position: absolute;
+  width: 100%;
+  top: 20px;
+  z-index: 1000;
+}
+
+.tm-nav .container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 100px;
+  padding: 10px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tm-logo {
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--tm-green-dark) !important;
+  font-size: 1.4rem;
+}
+
+.navbar-nav .nav-link {
+  color: #444 !important;
+  font-weight: 600;
+  padding: 0 15px !important;
+  transition: var(--tm-transition);
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--tm-green-dark) !important;
+}
+
+.tm-btn-contact {
+  background-color: var(--tm-green-dark);
+  color: var(--tm-accent-lime);
+  border: none;
+  font-weight: 700;
+  padding: 10px 25px;
+  transition: var(--tm-transition);
+}
+
+.tm-btn-contact:hover {
+  background-color: var(--tm-accent-lime);
+  color: var(--tm-green-dark);
+  transform: translateY(-2px);
+}
+
+/* --- Hero Section --- */
+.tm-hero-home {
+  padding: 160px 0 100px 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero-title-home {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #003b32, #0a6773, #4fa6b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-italic-home {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #899127;
+  background: none;
+  -webkit-text-fill-color: #e3f429;
+
+}
+
+.hero-subtext-home {
+  color: #e3f429;
+  font-size: 1.25rem;
+  opacity: 0.9;
+  border-left: 2px solid #899127;
+  padding-left: 20px;
+}
+
+/* SVG Dotted Path */
+.tm-path {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Destination Cards */
+.tm-card-hero {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  border: 5px solid var(--tm-white);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transition: var(--tm-transition);
+  background: var(--tm-green-mid);
+}
+
+.tm-card-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.tm-card-hero:hover {
+  transform: translateY(-15px) scale(1.03) !important;
+  z-index: 10;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.tm-card-hero:hover img {
+  transform: scale(1.1);
+}
+
+.dest-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tm-white);
+  color: var(--tm-green-dark);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- About Section --- */
+.tm-about {
+  background-color: var(--tm-white);
+  color: var(--tm-green-dark);
+  border-radius: var(--tm-radius-lg) var(--tm-radius-lg) 0 0;
+  margin-top: -60px;
+  position: relative;
+  z-index: 5;
+}
+
+.tm-tag {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--tm-green-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Gallery Capsule Stack */
+.tm-gallery-stack {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: absolute;
+  width: 240px;
+  height: 360px;
+  border-radius: var(--tm-radius-pill); /* Essential for the video look */
+  overflow: hidden;
+  border: 10px solid var(--tm-white);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+  transition: var(--tm-transition);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-1 { transform: translate(-100px, 20px) rotate(-8deg); z-index: 1; opacity: 0.8; }
+.item-2 { transform: translate(0, 0); z-index: 3; }
+.item-3 { transform: translate(100px, 40px) rotate(8deg); z-index: 2; opacity: 0.8; }
+
+.gallery-item:hover {
+  transform: translate(0, -20px) scale(1.1) rotate(0) !important;
+  z-index: 10;
+  opacity: 1;
+}
+
+/* --- FAQ / Accordion Section --- */
+.tm-faq {
+  background-color: var(--tm-off-white);
+  padding: 100px 0;
+}
+
+.accordion-item {
+  border: none;
+  background: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  background: none !important;
+  color: var(--tm-green-dark) !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 25px 0;
+  box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--tm-accent-lime) !important;
+  background-color: var(--tm-green-dark) !important;
+  padding: 25px 20px;
+  border-radius: 15px;
+}
+
+/* --- Footer --- */
+.tm-footer {
+  background-color: var(--tm-green-dark);
+  padding: 80px 0 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--tm-accent-lime);
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: var(--tm-transition);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.footer-link:hover {
+  color: var(--tm-accent-lime);
+  padding-left: 5px;
+}
+
+/* --- Utilities --- */
+.btn-pill {
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 700;
+  transition: var(--tm-transition);
+}
+
+.lift:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 991px) {
+  .tm-gallery-stack { height: 400px; transform: scale(0.8); }
+  .hero-title { font-size: 3.5rem; }
+  .tm-about { border-radius: 40px 40px 0 0; }
+}
+

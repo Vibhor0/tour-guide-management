@@ -1,0 +1,307 @@
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap');
+
+/* Font variables */
+:root {
+  --ff-ui: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
+           "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+           "Segoe UI Emoji", sans-serif;
+
+  --ff-display: "Montserrat", "Poppins", system-ui, -apple-system,
+                "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Apply fonts (parity with PlaceForm.css) */
+.page-bg,
+.form-container,
+.form-container input,
+.form-container select,
+.form-container button,
+.form-container label,
+.preview-caption,
+.err-msg,
+.add-btn,
+.back-btn {
+  font-family: var(--ff-ui) !important;
+}
+.form-container h2,
+.container-head h2 {
+  font-family: var(--ff-display) !important;
+}
+
+/* Background wrapper (alias of .bg-page) */
+.page-bg {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional */
+}
+
+/* Dark overlay (alias of .bg-overlay) */
+.page-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.35) 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Navbar overlay (alias of .nav-overlay) */
+.navbar-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: transparent;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none;
+  z-index: 3;
+}
+.navbar-overlay a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 16px;
+}
+.navbar-overlay a:hover {
+  text-decoration: underline;
+}
+
+/* Form container (alias of .place-form) */
+.form-container {
+  position: relative;
+  z-index: 3;
+  max-width: 500px;
+  width: 100%;
+  margin: 80px auto 30px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  overflow: hidden; /* keep preview inside */
+}
+
+/* Header row (alias of .place-form__head) */
+.container-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.form-container span { color: red; }
+
+/* Inputs & Selects (mirror PlaceForm.css) */
+.form-container input,
+.form-container select {
+  width: 95%;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.10);
+  color: #f8fafc;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 14px 40px rgba(14, 165, 233, 0.14),
+    inset 0 -8px 16px rgba(255, 255, 255, 0.06);
+
+  outline: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    transform 0.06s ease;
+}
+
+.form-container input::placeholder {
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.form-container input:hover,
+.form-container select:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.form-container input:focus,
+.form-container select:focus {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(14, 165, 233, 0.95);
+  box-shadow:
+    0 0 0 4px rgba(14, 165, 233, 0.22),
+    0 20px 60px rgba(14, 165, 233, 0.22);
+  transform: translateY(-1px);
+}
+
+/* Left glow for text inputs (alias of PlaceForm's text inputs) */
+.form-container input[type="text"],
+.form-container input[type="search"],
+.container-img {
+  background-image:
+    radial-gradient(circle at 0 50%, rgba(14,165,233,0.28), transparent 46%);
+  background-repeat: no-repeat;
+  background-size: 28px 100%;
+  background-position: 0 0;
+  padding-left: 15px;
+}
+.form-container input[type="text"]:focus,
+.form-container input[type="search"]:focus,
+.container-img:focus {
+  background-image:
+    radial-gradient(circle at 0 50%, rgba(6,182,212,0.36), transparent 46%);
+}
+
+/* Labels (alias of .place-form label) */
+.form-container label {
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #dbeafe;
+}
+.form-container label span { color: #ffd29a; }
+
+/* Errors (alias of .form-error) */
+.err-msg {
+  display: block;
+  text-align: left;
+  color: #ffd1d1;
+  font-size: 12.5px;
+}
+
+/* Buttons (identical to PlaceForm.css) */
+.add-btn {
+  background-color: rgb(154, 145, 109);
+  width: 95%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-top: 20px;
+  cursor: pointer;
+
+  color: white;
+  box-shadow: 0 12px 36px rgba(14,165,233,.28);
+  transition: transform .08s ease, filter .15s ease;
+}
+.add-btn:hover {
+  transform: translateY(-1.5px);
+  filter: saturate(1.06);
+}
+.add-btn:active {
+  transform: translateY(0);
+}
+
+.back-btn {
+  background-color: rgb(97, 192, 255);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* File input (same rules) */
+.form-container-img {
+  border: 1px solid rgb(179, 179, 179);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+}
+.form-container-img::-webkit-file-upload-button {
+  margin: 0 2%;
+  cursor: pointer;
+}
+
+/* Image Preview: map .preview* to PlaceForm’s image preview visuals */
+.preview {
+  margin-top: 12px;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  object-fit: cover;
+  box-sizing: border-box;
+}
+.preview-caption {
+  color: #dbeafe;
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: left;
+  opacity: .9;
+}
+
+/* Select refinements (same as PlaceForm.css) */
+.form-container select::-ms-expand { display: none; }
+.form-container select option {
+  color: #0f172a;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+.form-container select option:disabled { color: #cbd5e1; }
+.form-container select[multiple],
+.form-container select[size] {
+  background-image: none;
+  padding-right: 14px;
+  cursor: default;
+}
+
+/* Toast container z-index */
+.react-hot-toast { z-index: 9999; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  .form-container input,
+  .form-container select {
+    width: 100%;
+  }
+}
+
+/* Page base */
+body { background-color: #f7f7f7; }
+
+/* Accessibility helper (kept for parity) */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Optional parity: if you ever add a bg video to Edit page */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .bg-video {
+    opacity: 0.0001;
+    visibility: hidden;
+  }
+}

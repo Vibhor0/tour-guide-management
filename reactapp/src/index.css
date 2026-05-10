@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* === THEME VARIABLES (GLOBAL) === */
+
+/* LIGHT MODE */
+:root {
+  --bg: #ffffff;
+  --text: #0a3d2e;
+  --accent: #e8f086;
+  --card: #f9fbf9;
+}
+
+
+/* REAL DARK THEME (BLACK / GREY) */
+html.dark {
+  --bg: #030000;        /* background turns black */
+  --text: #f5f5f5;      /* readable white text */
+  --accent: #e8f086;    /* your yellowish lime stays */
+  --card: #1a1a1a;      /* dark grey cards */
+}
+
+/* APPLY THEME */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+button {
+  background: var(--accent);
+}
+
+/* Text links follow theme */
+a {
+  color: var(--text);
+}
